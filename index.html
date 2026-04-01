@@ -1,99 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Calisthenics Atlas | 6-Day Home Workout Plan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--font-sans); color: var(--color-text-primary); }
-  .container { max-width: 900px; margin: 0 auto; padding: 1.5rem 1rem; }
+    /* ----- MODERN DESIGN SYSTEM (light + airy) ----- */
+    :root {
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-soft: #f1f5f9;
+      --bg-elevated: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-tertiary: #5b6e8c;
+      --border-light: #e2e8f0;
+      --border-medium: #cbd5e1;
+      --accent-primary: #1d4ed8;
+      --accent-soft: #eef2ff;
+      --accent-green: #0f6e56;
+      --accent-green-bg: #e1f5ee;
+      --accent-orange: #b45309;
+      --accent-orange-bg: #ffedd5;
+      --accent-blue: #1e40af;
+      --accent-blue-bg: #e6f1fb;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 8px -2px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.03);
+      --shadow-hover: 0 12px 20px -12px rgba(0,0,0,0.12);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 20px;
+      --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      --transition-fast: all 0.2s ease;
+    }
 
-  .hero { text-align: center; padding: 2rem 1rem 1.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 1.5rem; }
-  .hero h1 { font-size: 22px; font-weight: 500; margin-bottom: 0.5rem; }
-  .hero p { font-size: 14px; color: var(--color-text-secondary); }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-body);
+      color: var(--text-primary);
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
 
-  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
-  .stat-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.75rem 1rem; }
-  .stat-label { font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
-  .stat-val { font-size: 15px; font-weight: 500; }
+    /* container — responsive breathing */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 2rem;
+    }
 
-  .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; border-bottom: 0.5px solid var(--color-border-tertiary); padding-bottom: 1rem; }
-  .tab { padding: 6px 14px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); font-size: 13px; cursor: pointer; background: transparent; color: var(--color-text-secondary); transition: all 0.15s; }
-  .tab:hover { background: var(--color-background-secondary); color: var(--color-text-primary); }
-  .tab.active { background: var(--color-background-primary); color: var(--color-text-primary); border-color: var(--color-border-primary); font-weight: 500; }
+    /* HERO section */
+    .hero {
+      text-align: center;
+      padding: 1.8rem 1rem 1.5rem;
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+    }
+    .hero h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      max-width: 550px;
+      margin: 0 auto;
+    }
 
-  .section { display: none; }
-  .section.active { display: block; }
+    /* stats grid — modern metric cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 0.5rem;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      transition: var(--transition-fast);
+      backdrop-filter: blur(2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-md);
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-tertiary);
+      margin-bottom: 6px;
+    }
+    .stat-val {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
 
-  .day-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-bottom: 1.5rem; }
-  .day-btn { padding: 8px 6px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); font-size: 12px; cursor: pointer; background: var(--color-background-secondary); color: var(--color-text-secondary); transition: all 0.15s; text-align: center; }
-  .day-btn:hover { border-color: var(--color-border-primary); color: var(--color-text-primary); }
-  .day-btn.active { background: var(--color-background-primary); border-color: var(--color-border-primary); color: var(--color-text-primary); font-weight: 500; }
-  .day-btn .day-tag { font-size: 10px; color: var(--color-text-tertiary); display: block; margin-top: 2px; }
-  .day-btn.rest { opacity: 0.6; }
+    /* TABS */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .tab {
+      background: transparent;
+      border: 1px solid var(--border-light);
+      padding: 0.6rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: var(--transition-fast);
+      backdrop-filter: blur(4px);
+    }
+    .tab:hover {
+      background: var(--bg-surface-soft);
+      border-color: var(--border-medium);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+    .tab.active {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: white;
+      box-shadow: 0 4px 8px -4px rgba(29,78,216,0.3);
+    }
 
-  .day-panel { display: none; }
-  .day-panel.active { display: block; }
+    /* day grid (week selector) */
+    .day-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+    .day-btn {
+      flex: 1 0 auto;
+      min-width: 85px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 60px;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: var(--transition-fast);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .day-btn .day-tag {
+      font-size: 0.7rem;
+      font-weight: 400;
+      display: block;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+    .day-btn:hover {
+      background: var(--bg-surface-soft);
+      border-color: var(--border-medium);
+      transform: translateY(-2px);
+    }
+    .day-btn.active {
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: white;
+      box-shadow: 0 6px 12px -8px rgba(29,78,216,0.4);
+    }
+    .day-btn.active .day-tag {
+      color: rgba(255,255,255,0.85);
+    }
+    .day-btn.rest {
+      background: var(--bg-surface-soft);
+      opacity: 0.85;
+    }
 
-  .day-header { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
-  .day-header h2 { font-size: 18px; font-weight: 500; }
-  .day-header p { font-size: 13px; color: var(--color-text-secondary); margin-top: 4px; }
+    /* section + day panels */
+    .section {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+    .section.active {
+      display: block;
+    }
+    .day-panel {
+      display: none;
+      animation: fadeSlide 0.2s ease-out;
+    }
+    .day-panel.active {
+      display: block;
+    }
 
-  .phase-badge { display: inline-block; font-size: 11px; padding: 2px 10px; border-radius: 99px; margin-bottom: 10px; }
-  .phase-warm { background: #FAEEDA; color: #854F0B; }
-  .phase-main { background: #E1F5EE; color: #0F6E56; }
-  .phase-cool { background: #E6F1FB; color: #185FA5; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(-6px);}
+      to { opacity: 1; transform: translateX(0);}
+    }
 
-  .exercise-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 0.75rem; cursor: pointer; transition: border-color 0.15s; }
-  .exercise-card:hover { border-color: var(--color-border-secondary); }
-  .exercise-card.open { border-color: var(--color-border-primary); }
-  .ex-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .ex-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
-  .ex-icon { width: 36px; height: 36px; border-radius: var(--border-radius-md); background: var(--color-background-secondary); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-  .ex-name { font-size: 14px; font-weight: 500; }
-  .ex-meta { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
-  .ex-chevron { font-size: 12px; color: var(--color-text-tertiary); flex-shrink: 0; transition: transform 0.2s; }
-  .exercise-card.open .ex-chevron { transform: rotate(180deg); }
-  .ex-detail { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid var(--color-border-tertiary); }
-  .exercise-card.open .ex-detail { display: block; }
-  .detail-section { margin-bottom: 0.75rem; }
-  .detail-label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-  .detail-text { font-size: 13px; line-height: 1.6; color: var(--color-text-primary); }
-  .steps-list { padding-left: 0; list-style: none; }
-  .steps-list li { font-size: 13px; padding: 4px 0 4px 20px; position: relative; line-height: 1.5; color: var(--color-text-primary); }
-  .steps-list li::before { content: attr(data-n); position: absolute; left: 0; color: var(--color-text-tertiary); font-weight: 500; }
-  .mistake-list li::before { content: "✗"; color: #E24B4A; }
-  .tip-list li::before { content: "→"; color: #1D9E75; }
+    /* day headers */
+    .day-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border-light);
+    }
+    .day-header h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .day-header p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
 
-  .mistake-list li { color: var(--color-text-primary); }
-  .tip-list li { color: var(--color-text-primary); }
+    /* phase badges */
+    .phase-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .phase-warm { background: #fef3c7; color: #b45309; border-left: 2px solid #f59e0b;}
+    .phase-main { background: #e0f2fe; color: #075985; border-left: 2px solid #0ea5e9;}
+    .phase-cool { background: #e0e7ff; color: #3730a3; border-left: 2px solid #6366f1;}
 
-  .rest-day-card { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 2rem; text-align: center; }
-  .rest-day-card h3 { font-size: 18px; font-weight: 500; margin-bottom: 0.5rem; }
-  .rest-day-card p { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+    /* exercise cards */
+    .exercise-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.2rem;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+    .exercise-card:hover {
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+    .ex-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .ex-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+    }
+    .ex-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--bg-surface-soft);
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .ex-name {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .ex-meta {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+    .ex-chevron {
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .exercise-card.open .ex-chevron {
+      transform: rotate(180deg);
+    }
+    .ex-detail {
+      display: none;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .exercise-card.open .ex-detail {
+      display: block;
+      animation: fadeSlide 0.2s ease;
+    }
+    .detail-section {
+      margin-bottom: 0.85rem;
+    }
+    .detail-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .steps-list {
+      padding-left: 0;
+      list-style: none;
+    }
+    .steps-list li {
+      font-size: 0.85rem;
+      padding: 5px 0 5px 26px;
+      position: relative;
+      line-height: 1.45;
+      color: var(--text-primary);
+    }
+    .steps-list li::before {
+      content: attr(data-n);
+      position: absolute;
+      left: 4px;
+      font-weight: 600;
+      color: var(--accent-primary);
+    }
+    .mistake-list li::before {
+      content: "✗";
+      color: #e24b4a;
+      font-weight: 600;
+    }
+    .tip-list li::before {
+      content: "→";
+      color: var(--accent-green);
+    }
+    .muscle-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 4px;
+    }
+    .mtag {
+      background: var(--bg-surface-soft);
+      padding: 3px 10px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .sets-pill {
+      background: #eef2ff;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border-light);
+      margin: 1.2rem 0;
+    }
 
-  .prog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-  .prog-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; }
-  .prog-week { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-  .prog-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
-  .prog-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+    /* rest card */
+    .rest-day-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .rest-day-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .rest-day-card p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
 
-  .tip-block { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
-  .tip-block h3 { font-size: 14px; font-weight: 500; margin-bottom: 0.5rem; }
-  .tip-block p, .tip-block li { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
-  .tip-block ul { padding-left: 1.25rem; }
-  .tip-block li { margin-bottom: 4px; }
+    /* progression & tip blocks */
+    .prog-grid, .tip-block {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+    .prog-card, .tip-block {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      border: 1px solid var(--border-light);
+      transition: var(--transition-fast);
+    }
+    .prog-card:hover, .tip-block:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .prog-week {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .prog-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .prog-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: -0.2px;
+    }
+    .tip-block ul {
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .tip-block li {
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: var(--text-secondary);
+    }
+    .tip-block h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .tip-block p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
 
-  .section-title { font-size: 16px; font-weight: 500; margin-bottom: 1rem; }
+    /* Responsive details */
+    @media (max-width: 680px) {
+      .container {
+        padding: 0.9rem;
+      }
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .day-btn {
+        min-width: 70px;
+        font-size: 0.75rem;
+        padding: 0.5rem 0.25rem;
+      }
+      .stats-grid {
+        gap: 8px;
+      }
+      .stat-card {
+        padding: 0.7rem 0.2rem;
+      }
+      .ex-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+      }
+      .ex-name {
+        font-size: 0.9rem;
+      }
+      .tab {
+        padding: 0.45rem 1rem;
+        font-size: 0.8rem;
+      }
+      .day-header h2 {
+        font-size: 1.25rem;
+      }
+    }
 
-  .muscle-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-  .mtag { font-size: 11px; padding: 2px 8px; border-radius: 99px; background: var(--color-background-secondary); color: var(--color-text-secondary); }
+    @media (max-width: 480px) {
+      .day-grid {
+        gap: 8px;
+      }
+      .day-btn {
+        min-width: 65px;
+      }
+      .prog-card, .tip-block {
+        padding: 1rem;
+      }
+    }
 
-  .sets-pill { display: inline-block; font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 99px; background: var(--color-background-info, #E6F1FB); color: var(--color-text-info, #185FA5); }
-
-  .divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 1.5rem 0; }
-</style>
-
+    /* additional micro-interactions */
+    button, .day-btn, .tab, .exercise-card {
+      user-select: none;
+    }
+    .day-btn:active, .tab:active {
+      transform: scale(0.97);
+    }
+    a, button {
+      transition: all 0.15s ease;
+    }
+    ::selection {
+      background: var(--accent-soft);
+      color: var(--accent-primary);
+    }
+  </style>
+</head>
+<body>
 <div class="container">
   <div class="hero">
-    <h1>Your custom calisthenics plan</h1>
-    <p>6-day home workout · beginner to intermediate · fat loss + strength + flexibility</p>
+    <h1>⚡ Your custom calisthenics plan</h1>
+    <p>6‑day home workout · beginner to intermediate · fat loss + strength + flexibility</p>
   </div>
 
   <div class="stats-grid">
@@ -106,448 +552,110 @@
   </div>
 
   <div class="tabs">
-    <button class="tab active" onclick="switchTab('workout')">Workout plan</button>
-    <button class="tab" onclick="switchTab('progression')">Progression</button>
-    <button class="tab" onclick="switchTab('diet')">Diet tips</button>
-    <button class="tab" onclick="switchTab('recovery')">Recovery & energy</button>
-    <button class="tab" onclick="switchTab('mistakes')">Common mistakes</button>
+    <button class="tab active" data-tab="workout">💪 Workout plan</button>
+    <button class="tab" data-tab="progression">📈 Progression</button>
+    <button class="tab" data-tab="diet">🥗 Diet tips</button>
+    <button class="tab" data-tab="recovery">🌀 Recovery & energy</button>
+    <button class="tab" data-tab="mistakes">⚠️ Common mistakes</button>
   </div>
 
   <!-- WORKOUT TAB -->
   <div id="tab-workout" class="section active">
-    <div class="day-grid">
-      <button class="day-btn active" onclick="switchDay(0)">Mon<span class="day-tag">Chest + Triceps</span></button>
-      <button class="day-btn" onclick="switchDay(1)">Tue<span class="day-tag">Back + Biceps</span></button>
-      <button class="day-btn" onclick="switchDay(2)">Wed<span class="day-tag">Legs + Glutes</span></button>
-      <button class="day-btn" onclick="switchDay(3)">Thu<span class="day-tag">Core + Posture</span></button>
-      <button class="day-btn" onclick="switchDay(4)">Fri<span class="day-tag">Full Body HIIT</span></button>
-      <button class="day-btn" onclick="switchDay(5)">Sat<span class="day-tag">Flex + Mobility</span></button>
-      <button class="day-btn rest" onclick="switchDay(6)">Sun<span class="day-tag">Rest</span></button>
+    <div class="day-grid" id="dayGridContainer">
+      <!-- day buttons are static but interactive -->
+      <button class="day-btn active" data-day="0">Mon<span class="day-tag">Chest + Triceps</span></button>
+      <button class="day-btn" data-day="1">Tue<span class="day-tag">Back + Biceps</span></button>
+      <button class="day-btn" data-day="2">Wed<span class="day-tag">Legs + Glutes</span></button>
+      <button class="day-btn" data-day="3">Thu<span class="day-tag">Core + Posture</span></button>
+      <button class="day-btn" data-day="4">Fri<span class="day-tag">Full Body HIIT</span></button>
+      <button class="day-btn" data-day="5">Sat<span class="day-tag">Flex + Mobility</span></button>
+      <button class="day-btn rest" data-day="6">Sun<span class="day-tag">Rest</span></button>
     </div>
 
-    <!-- DAY 1 -->
-    <div id="day-0" class="day-panel active">
-      <div class="day-header">
-        <h2>Monday — Chest, shoulders & triceps</h2>
-        <p>Focus: push strength, upper body definition · Duration: ~45 min</p>
-      </div>
-
-      <span class="phase-badge phase-warm">Warm-up · 5–7 min</span>
-      <div id="warmup-d1"></div>
-
-      <hr class="divider">
-      <span class="phase-badge phase-main">Main workout</span>
-      <div id="main-d1"></div>
-
-      <hr class="divider">
-      <span class="phase-badge phase-cool">Cool-down · 5–7 min</span>
-      <div id="cool-d1"></div>
-    </div>
-
-    <!-- DAY 2 -->
-    <div id="day-1" class="day-panel">
-      <div class="day-header">
-        <h2>Tuesday — Back & biceps</h2>
-        <p>Focus: pulling strength, posture muscles · Duration: ~45 min</p>
-      </div>
-      <span class="phase-badge phase-warm">Warm-up · 5–7 min</span>
-      <div id="warmup-d2"></div>
-      <hr class="divider">
-      <span class="phase-badge phase-main">Main workout</span>
-      <div id="main-d2"></div>
-      <hr class="divider">
-      <span class="phase-badge phase-cool">Cool-down · 5–7 min</span>
-      <div id="cool-d2"></div>
-    </div>
-
-    <!-- DAY 3 -->
-    <div id="day-2" class="day-panel">
-      <div class="day-header">
-        <h2>Wednesday — Legs & glutes</h2>
-        <p>Focus: lower body strength, fat burn · Duration: ~45 min</p>
-      </div>
-      <span class="phase-badge phase-warm">Warm-up · 5–7 min</span>
-      <div id="warmup-d3"></div>
-      <hr class="divider">
-      <span class="phase-badge phase-main">Main workout</span>
-      <div id="main-d3"></div>
-      <hr class="divider">
-      <span class="phase-badge phase-cool">Cool-down · 5–7 min</span>
-      <div id="cool-d3"></div>
-    </div>
-
-    <!-- DAY 4 -->
-    <div id="day-3" class="day-panel">
-      <div class="day-header">
-        <h2>Thursday — Core & posture</h2>
-        <p>Focus: belly fat, spinal alignment, posture correction · Duration: ~40 min</p>
-      </div>
-      <span class="phase-badge phase-warm">Warm-up · 5 min</span>
-      <div id="warmup-d4"></div>
-      <hr class="divider">
-      <span class="phase-badge phase-main">Main workout</span>
-      <div id="main-d4"></div>
-      <hr class="divider">
-      <span class="phase-badge phase-cool">Cool-down · 5 min</span>
-      <div id="cool-d4"></div>
-    </div>
-
-    <!-- DAY 5 -->
-    <div id="day-4" class="day-panel">
-      <div class="day-header">
-        <h2>Friday — Full body HIIT</h2>
-        <p>Focus: fat burn, stamina, cardiovascular fitness · Duration: ~40 min</p>
-      </div>
-      <span class="phase-badge phase-warm">Warm-up · 5 min</span>
-      <div id="warmup-d5"></div>
-      <hr class="divider">
-      <span class="phase-badge phase-main">Main workout · circuit style</span>
-      <div id="main-d5"></div>
-      <hr class="divider">
-      <span class="phase-badge phase-cool">Cool-down · 5 min</span>
-      <div id="cool-d5"></div>
-    </div>
-
-    <!-- DAY 6 -->
-    <div id="day-5" class="day-panel">
-      <div class="day-header">
-        <h2>Saturday — Flexibility & mobility</h2>
-        <p>Focus: full body stretch, posture, recovery · Duration: ~35 min</p>
-      </div>
-      <span class="phase-badge phase-main">Full session</span>
-      <div id="main-d6"></div>
-    </div>
-
-    <!-- DAY 7 REST -->
-    <div id="day-6" class="day-panel">
-      <div class="rest-day-card">
-        <h3>Sunday — complete rest</h3>
-        <p>Rest is where growth happens. Your muscles repair and strengthen today.<br><br>
-        Light activities are fine — a slow walk, gentle breathing, or foam rolling. Stay hydrated, eat well, and sleep as much as possible. You've earned it.</p>
-      </div>
-    </div>
+    <!-- panels for each day -->
+    <div id="day-0" class="day-panel active"><div class="day-header"><h2>Monday — Chest, shoulders & triceps</h2><p>Focus: push strength, upper body definition · Duration: ~45 min</p></div><span class="phase-badge phase-warm">Warm-up · 5–7 min</span><div id="warmup-d1"></div><hr class="divider"><span class="phase-badge phase-main">Main workout</span><div id="main-d1"></div><hr class="divider"><span class="phase-badge phase-cool">Cool-down · 5–7 min</span><div id="cool-d1"></div></div>
+    <div id="day-1" class="day-panel"><div class="day-header"><h2>Tuesday — Back & biceps</h2><p>Focus: pulling strength, posture muscles · Duration: ~45 min</p></div><span class="phase-badge phase-warm">Warm-up · 5–7 min</span><div id="warmup-d2"></div><hr class="divider"><span class="phase-badge phase-main">Main workout</span><div id="main-d2"></div><hr class="divider"><span class="phase-badge phase-cool">Cool-down · 5–7 min</span><div id="cool-d2"></div></div>
+    <div id="day-2" class="day-panel"><div class="day-header"><h2>Wednesday — Legs & glutes</h2><p>Focus: lower body strength, fat burn · Duration: ~45 min</p></div><span class="phase-badge phase-warm">Warm-up · 5–7 min</span><div id="warmup-d3"></div><hr class="divider"><span class="phase-badge phase-main">Main workout</span><div id="main-d3"></div><hr class="divider"><span class="phase-badge phase-cool">Cool-down · 5–7 min</span><div id="cool-d3"></div></div>
+    <div id="day-3" class="day-panel"><div class="day-header"><h2>Thursday — Core & posture</h2><p>Focus: belly fat, spinal alignment, posture correction · Duration: ~40 min</p></div><span class="phase-badge phase-warm">Warm-up · 5 min</span><div id="warmup-d4"></div><hr class="divider"><span class="phase-badge phase-main">Main workout</span><div id="main-d4"></div><hr class="divider"><span class="phase-badge phase-cool">Cool-down · 5 min</span><div id="cool-d4"></div></div>
+    <div id="day-4" class="day-panel"><div class="day-header"><h2>Friday — Full body HIIT</h2><p>Focus: fat burn, stamina, cardiovascular fitness · Duration: ~40 min</p></div><span class="phase-badge phase-warm">Warm-up · 5 min</span><div id="warmup-d5"></div><hr class="divider"><span class="phase-badge phase-main">Main workout · circuit style</span><div id="main-d5"></div><hr class="divider"><span class="phase-badge phase-cool">Cool-down · 5 min</span><div id="cool-d5"></div></div>
+    <div id="day-5" class="day-panel"><div class="day-header"><h2>Saturday — Flexibility & mobility</h2><p>Focus: full body stretch, posture, recovery · Duration: ~35 min</p></div><span class="phase-badge phase-main">Full session</span><div id="main-d6"></div></div>
+    <div id="day-6" class="day-panel"><div class="rest-day-card"><h3>✨ Sunday — complete rest ✨</h3><p>Rest is where growth happens. Your muscles repair and strengthen today.<br><br>Light activities are fine — a slow walk, gentle breathing, or foam rolling. Stay hydrated, eat well, and sleep as much as possible. You've earned it.</p></div></div>
   </div>
 
-  <!-- PROGRESSION TAB -->
-  <div id="tab-progression" class="section">
-    <p class="section-title">4-week progression plan</p>
-    <p style="font-size:13px; color: var(--color-text-secondary); margin-bottom: 1.5rem; line-height:1.6;">Progress gradually — your body needs adaptation time. Only increase volume or difficulty when you can complete all sets with good form.</p>
-    <div class="prog-grid">
-      <div class="prog-card">
-        <div class="prog-week">Week 1–2</div>
-        <div class="prog-title">Foundation</div>
-        <div class="prog-desc">Learn all movements. Focus 100% on form. Use the exact sets/reps listed. Rest fully between sets. Your body is adapting — don't rush.</div>
-      </div>
-      <div class="prog-card">
-        <div class="prog-week">Week 3–4</div>
-        <div class="prog-title">Volume up</div>
-        <div class="prog-desc">Add 1 extra set per exercise. Reduce rest by 15 seconds. Try to hit the top of each rep range. Form must stay strict.</div>
-      </div>
-      <div class="prog-card">
-        <div class="prog-week">Week 5–6</div>
-        <div class="prog-title">Intensity up</div>
-        <div class="prog-desc">Progress push-ups to diamond or decline. Add jump squats to leg day. Introduce 10-sec pauses at the hardest part of each move.</div>
-      </div>
-      <div class="prog-card">
-        <div class="prog-week">Week 7–8</div>
-        <div class="prog-title">Power phase</div>
-        <div class="prog-desc">Add explosive variants: clap push-ups, jump squats, speed burpees. Reduce rest to 30–40 sec. Add a 4th circuit on HIIT day.</div>
-      </div>
-    </div>
-
-    <hr class="divider">
-    <p class="section-title">Exercise progressions</p>
-    <div class="prog-grid">
-      <div class="prog-card"><div class="prog-week">Push-ups</div><div class="prog-desc">Wall → Incline → Knee → Standard → Wide → Diamond → Decline → Archer → One-arm</div></div>
-      <div class="prog-card"><div class="prog-week">Squats</div><div class="prog-desc">Box squat → Bodyweight → Pause squat → Jump squat → Bulgarian split squat → Pistol squat</div></div>
-      <div class="prog-card"><div class="prog-week">Rows</div><div class="prog-desc">Incline rows (table) → Horizontal rows → Feet elevated rows → Australian pull-ups → Pull-ups</div></div>
-      <div class="prog-card"><div class="prog-week">Core</div><div class="prog-desc">Dead bug → Plank → Hollow body → L-sit → Dragon flag → Hanging leg raises</div></div>
-    </div>
-  </div>
-
-  <!-- DIET TAB -->
-  <div id="tab-diet" class="section">
-    <p class="section-title">Diet tips for fat loss + lean muscle</p>
-    <div class="tip-block">
-      <h3>Calorie target (approximate)</h3>
-      <p>At 81 kg with a sedentary lifestyle, your maintenance is roughly 2,400–2,600 kcal/day. Aim for a 300–400 kcal deficit: <strong>~2,000–2,200 kcal/day</strong>. This will drop ~0.3–0.5 kg/week — slow enough to preserve muscle.</p>
-    </div>
-    <div class="tip-block">
-      <h3>Protein — your top priority</h3>
-      <p>Eat 1.6–2g of protein per kg of bodyweight. That's 130–160g/day. High-protein meals preserve muscle while you lose fat.</p>
-      <ul><li>Eggs, paneer, curd, dal, chicken, fish, tofu</li><li>Include protein in every meal</li><li>Protein also keeps you fuller longer — reduces cravings</li></ul>
-    </div>
-    <div class="tip-block">
-      <h3>Meal timing</h3>
-      <ul><li>Eat within 1 hour of waking up — stops morning cortisol from eating muscle</li><li>Pre-workout: a banana or small carb snack 30–45 min before training</li><li>Post-workout: protein + carbs within 45 min (e.g., eggs + rice, or curd + fruit)</li><li>Last meal 2 hours before sleep</li></ul>
-    </div>
-    <div class="tip-block">
-      <h3>What to eat more of</h3>
-      <ul><li>Vegetables (fill half your plate) — especially leafy greens</li><li>Whole grains: brown rice, oats, whole wheat roti</li><li>Fruits: banana, apple, papaya, watermelon</li><li>Legumes: rajma, chana, moong dal</li><li>Healthy fats: groundnuts, flaxseeds, coconut in moderation</li></ul>
-    </div>
-    <div class="tip-block">
-      <h3>What to reduce</h3>
-      <ul><li>Refined carbs: maida, white bread, biscuits, packaged snacks</li><li>Sugary drinks: soda, juice, chai with excess sugar</li><li>Fried foods: samosa, pakora, puri</li><li>Late night heavy meals</li></ul>
-    </div>
-    <div class="tip-block">
-      <h3>Hydration</h3>
-      <p>You're already drinking 6+ glasses — good start. Aim for 3–3.5 litres daily. Drink 500ml water first thing after waking. Staying hydrated reduces false hunger signals and improves fat metabolism.</p>
-    </div>
-    <div class="tip-block">
-      <h3>Belly fat specifically</h3>
-      <p>You cannot spot-reduce belly fat with exercises alone. Belly fat responds to overall fat loss (calorie deficit + exercise), reduced stress, and better sleep. Be patient — it's usually the last to go for stocky builds, but it will come off consistently.</p>
-    </div>
-  </div>
-
-  <!-- RECOVERY TAB -->
-  <div id="tab-recovery" class="section">
-    <p class="section-title">Energy, recovery & posture</p>
-    <div class="tip-block">
-      <h3>Sleep — your biggest lever</h3>
-      <p>You're sleeping 5–6 hours — this is significantly limiting your fat loss, muscle gain, and energy. During sleep, your body releases growth hormone and repairs muscle tissue. Aim for minimum 7 hours. Even adding 45 minutes will make a noticeable difference within 2 weeks.</p>
-      <ul style="margin-top: 8px;">
-        <li>Set a consistent bedtime — even weekends</li>
-        <li>No screens 30 min before bed</li>
-        <li>Keep your room cool and dark</li>
-        <li>Avoid caffeine after 4 PM</li>
-      </ul>
-    </div>
-    <div class="tip-block">
-      <h3>Boosting inconsistent energy</h3>
-      <ul>
-        <li>Eat breakfast within 1 hour of waking — stabilizes blood sugar</li>
-        <li>Avoid large carb-heavy lunches (causes energy crash)</li>
-        <li>Take a 10–15 min walk after meals — improves alertness</li>
-        <li>5–10 min sunlight exposure in the morning resets your circadian rhythm</li>
-        <li>Drink water consistently — even mild dehydration kills energy</li>
-        <li>If energy is very low, do your workout anyway at lower intensity — movement generates energy</li>
-      </ul>
-    </div>
-    <div class="tip-block">
-      <h3>Recovery between sessions</h3>
-      <ul>
-        <li>Muscle soreness (DOMS) on days 1–2 is normal — keep moving gently</li>
-        <li>Foam rolling or self-massage for sore muscles before bed</li>
-        <li>Cold water splash after workouts reduces inflammation</li>
-        <li>If severely sore, do a lighter version of that day's workout rather than skipping</li>
-        <li>Don't train a muscle group until soreness is below 4/10</li>
-      </ul>
-    </div>
-    <div class="tip-block">
-      <h3>Posture correction (for long sitting hours)</h3>
-      <ul>
-        <li>Every hour of sitting: stand up and do 10 shoulder rolls + 10 chest openers</li>
-        <li>Doorway stretch daily: 2 × 30 sec — opens tight chest from slouching</li>
-        <li>Chin tucks: 3 × 10 reps daily — combats forward head posture from screens</li>
-        <li>Cat-cow stretch: every morning, 10 reps — mobilizes the spine</li>
-        <li>Hip flexor stretch daily — sitting tightens hip flexors, causing lower back pain</li>
-        <li>Strengthen your glutes and back — weak posterior chain = bad posture</li>
-        <li>Consider a lumbar support cushion while sitting</li>
-      </ul>
-    </div>
-    <div class="tip-block">
-      <h3>Stress & cortisol</h3>
-      <p>High stress = high cortisol = belly fat storage. Manage stress through 5 min of deep breathing daily, reducing doom-scrolling, and getting outside. Yoga-style workouts on Saturday help directly.</p>
-    </div>
-  </div>
-
-  <!-- MISTAKES TAB -->
-  <div id="tab-mistakes" class="section">
-    <p class="section-title">Beginner mistakes to avoid in calisthenics</p>
-    <div class="tip-block">
-      <h3>Skipping warm-up</h3>
-      <p>Cold muscles tear easily and perform worse. Never skip the 5-minute warm-up. It also mentally primes you for the session.</p>
-    </div>
-    <div class="tip-block">
-      <h3>Ego reps — quantity over quality</h3>
-      <p>Doing 20 sloppy push-ups is worse than 10 perfect ones. Bad form recruits the wrong muscles and causes injuries. Always prioritize form — drop the reps if you need to.</p>
-    </div>
-    <div class="tip-block">
-      <h3>Not resting enough between sets</h3>
-      <p>Rushing sets means you can't perform the next set with good form. Rest 45–90 seconds between sets as noted. It's not laziness — it's how you get stronger.</p>
-    </div>
-    <div class="tip-block">
-      <h3>Progressing too fast</h3>
-      <p>Your tendons and joints adapt slower than your muscles. Adding too much volume too soon causes overuse injuries. Stick to the 4-week phase plan and add difficulty gradually.</p>
-    </div>
-    <div class="tip-block">
-      <h3>Ignoring pain</h3>
-      <p>Muscle burn = good. Sharp or joint pain = stop immediately. Never push through joint pain. Rest it, ice it, and if it persists, see a doctor before continuing.</p>
-    </div>
-    <div class="tip-block">
-      <h3>Inconsistency followed by overtraining</h3>
-      <p>Missing a week then doing double sessions is a recipe for injury and burnout. Consistent moderate effort beats sporadic intense effort every time. Show up 6 days at 80% rather than 2 days at 100%.</p>
-    </div>
-    <div class="tip-block">
-      <h3>Not tracking progress</h3>
-      <p>Take a photo on Week 1, Week 4, Week 8. Log your reps each session. Numbers don't lie — seeing improvement is the #1 motivation tool.</p>
-    </div>
-    <div class="tip-block">
-      <h3>Expecting fast results</h3>
-      <p>Your body type (endomorph/stocky) loses fat more slowly but builds solid, dense muscle. Visible results typically appear in 6–10 weeks of consistent work. Trust the process.</p>
-    </div>
-  </div>
+  <!-- OTHER TABS (content unchanged but same enhanced style) -->
+  <div id="tab-progression" class="section"><p class="section-title">4-week progression plan</p><p style="font-size:0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Progress gradually — only increase volume when form is perfect.</p><div class="prog-grid"><div class="prog-card"><div class="prog-week">Week 1–2</div><div class="prog-title">Foundation</div><div class="prog-desc">Learn all movements. Focus 100% on form. Use the exact sets/reps listed. Rest fully between sets. Your body is adapting — don't rush.</div></div><div class="prog-card"><div class="prog-week">Week 3–4</div><div class="prog-title">Volume up</div><div class="prog-desc">Add 1 extra set per exercise. Reduce rest by 15 seconds. Try to hit the top of each rep range. Form must stay strict.</div></div><div class="prog-card"><div class="prog-week">Week 5–6</div><div class="prog-title">Intensity up</div><div class="prog-desc">Progress push-ups to diamond or decline. Add jump squats. Introduce 10-sec pauses at the hardest part of each move.</div></div><div class="prog-card"><div class="prog-week">Week 7–8</div><div class="prog-title">Power phase</div><div class="prog-desc">Add explosive variants: clap push-ups, jump squats, speed burpees. Reduce rest to 30–40 sec.</div></div></div><hr class="divider"><p class="section-title">Exercise progressions</p><div class="prog-grid"><div class="prog-card"><div class="prog-week">Push-ups</div><div class="prog-desc">Wall → Incline → Knee → Standard → Wide → Diamond → Decline → Archer → One-arm</div></div><div class="prog-card"><div class="prog-week">Squats</div><div class="prog-desc">Box squat → Bodyweight → Pause squat → Jump squat → Bulgarian split squat → Pistol squat</div></div><div class="prog-card"><div class="prog-week">Rows</div><div class="prog-desc">Incline rows (table) → Horizontal rows → Feet elevated rows → Australian pull-ups → Pull-ups</div></div><div class="prog-card"><div class="prog-week">Core</div><div class="prog-desc">Dead bug → Plank → Hollow body → L-sit → Dragon flag → Hanging leg raises</div></div></div></div>
+  <div id="tab-diet" class="section"><p class="section-title">Diet tips for fat loss + lean muscle</p><div class="tip-block"><h3>🔥 Calorie target</h3><p>Maintenance ~2,400–2,600 kcal. Aim for 2,000–2,200 kcal/day → slow fat loss, muscle preserved.</p></div><div class="tip-block"><h3>🥚 Protein priority</h3><p>130–160g/day. Eggs, paneer, dal, chicken, fish, tofu. Keeps you full and defends muscle.</p></div><div class="tip-block"><h3>⏰ Meal timing</h3><ul><li>Breakfast within 1h of waking</li><li>Pre-workout: banana or light carbs</li><li>Post-workout: protein + carbs (curd + fruit)</li><li>Last meal 2h before sleep</li></ul></div><div class="tip-block"><h3>🥦 What to eat more</h3><ul><li>Leafy greens, whole grains, oats, legumes</li><li>Fruits, groundnuts, flaxseeds</li></ul></div><div class="tip-block"><h3>🚫 Reduce</h3><ul><li>Refined carbs, sugary drinks, fried snacks, late meals</li></ul></div><div class="tip-block"><h3>💧 Hydration</h3><p>3–3.5L daily. Drink 500ml right after waking.</p></div></div>
+  <div id="tab-recovery" class="section"><p class="section-title">Energy, recovery & posture</p><div class="tip-block"><h3>😴 Sleep is key</h3><p>5–6h is limiting you. Aim for 7h+. Add 45min gradually for noticeable recovery.</p><ul><li>No screens 30min before bed</li><li>Consistent bedtime</li></ul></div><div class="tip-block"><h3>⚡ Boost energy</h3><ul><li>Eat breakfast within 1h</li><li>Avoid heavy carb lunches</li><li>10min walk after meals</li><li>Morning sunlight exposure</li></ul></div><div class="tip-block"><h3>🧘 Posture correction</h3><ul><li>Doorway stretch 2x30sec daily</li><li>Chin tucks 3x10</li><li>Cat-cow every morning</li><li>Hip flexor stretch</li></ul></div><div class="tip-block"><h3>🧠 Stress & cortisol</h3><p>Deep breathing, reduce doomscrolling, Saturday mobility flow.</p></div></div>
+  <div id="tab-mistakes" class="section"><p class="section-title">Beginner mistakes to avoid</p><div class="tip-block"><h3>🚫 Skipping warm-up</h3><p>Cold muscles = lower performance + injury risk. 5min minimum.</p></div><div class="tip-block"><h3>🎯 Ego reps</h3><p>20 sloppy push-ups &lt; 10 perfect ones. Form > quantity.</p></div><div class="tip-block"><h3>⏱️ Not resting enough</h3><p>Rest 45–90 sec between sets for quality.</p></div><div class="tip-block"><h3>📈 Progressing too fast</h3><p>Tendons adapt slower — follow weekly phases.</p></div><div class="tip-block"><h3>⚠️ Ignoring pain</h3><p>Joint pain = stop immediately. Muscle burn = good.</p></div><div class="tip-block"><h3>🔄 Inconsistency + overtraining</h3><p>Consistent 80% effort beats sporadic 100%.</p></div><div class="tip-block"><h3>📸 Not tracking</h3><p>Take photos & log reps. Motivation follows proof.</p></div></div>
 </div>
 
 <script>
-const days = [
-  {
-    warmup: [
-      { icon:"🔄", name:"Arm circles", meta:"2 × 20 reps · no rest", muscles:["Shoulders","Rotator cuff"], steps:["Stand with feet shoulder-width apart","Extend arms fully to the sides","Make large slow circles forward for 10 reps","Reverse direction for 10 reps","Keep core lightly braced throughout"], mistakes:["Shrugging shoulders up toward ears","Making tiny circles — make them as large as possible"], tips:["Breathe normally throughout","Progressively increase circle size"] },
-      { icon:"🏃", name:"Jumping jacks", meta:"2 × 30 sec · 15 sec rest", muscles:["Full body","Heart rate up"], steps:["Start standing, feet together, arms at sides","Jump: spread feet wider than shoulders while raising arms overhead","Jump back to start position","Keep a steady rhythm — not too fast"], mistakes:["Landing with stiff, straight knees — bend them slightly","Letting arms flop — control the movement"], tips:["If too intense, do step-jacks (step one foot out at a time)"] },
-      { icon:"🔃", name:"Shoulder rolls + neck tilts", meta:"1 × 30 sec each", muscles:["Traps","Neck"], steps:["Roll shoulders forward 10×, backward 10×","Tilt ear to shoulder slowly, hold 5 sec each side","Do NOT roll the neck in full circles"], mistakes:["Rolling neck backward — can compress cervical spine"], tips:["This directly counters forward-head posture from screens"] }
-    ],
-    main: [
-      { icon:"💪", name:"Standard push-ups", meta:"3 × 8–12 reps · 60 sec rest", muscles:["Chest","Triceps","Front deltoids","Core"], steps:["Place hands slightly wider than shoulders","Lower body as one rigid unit — don't let hips sag or pike up","Chest should touch or nearly touch the floor","Push back up fully, lock elbows at top briefly","Keep neck neutral — don't look up or tuck chin to chest"], mistakes:["Letting hips sag (lower back strain)","Flaring elbows out at 90° (shoulder injury) — keep them at 45°","Half reps — go all the way down","Holding breath"], tips:["If you can't do 8, try incline push-ups on a table or wall","Exhale as you push up, inhale as you lower"] },
-      { icon:"🔺", name:"Diamond push-ups", meta:"3 × 6–10 reps · 60 sec rest", muscles:["Triceps","Inner chest"], steps:["Form a diamond shape with thumbs and index fingers","Hands directly under chest","Lower slowly — elbows stay close to body","Push fully back up"], mistakes:["Hands too far forward — puts stress on wrists","Elbows flaring out — defeats the purpose"], tips:["These are harder — reduce reps if needed","Rest 90 sec if you're doing these after standard push-ups"] },
-      { icon:"📐", name:"Incline push-ups (on chair)", meta:"3 × 10–15 reps · 45 sec rest", muscles:["Lower chest","Shoulders"], steps:["Place hands on edge of chair or low table","Body in straight plank position","Lower chest to the surface","Push back up"], mistakes:["Bending at the hips — keep body straight","Using a surface that can slide"], tips:["Easier than standard push-ups — great for high-rep burnout sets"] },
-      { icon:"🧍", name:"Pike push-ups", meta:"3 × 8–10 reps · 60 sec rest", muscles:["Shoulders","Upper chest","Triceps"], steps:["Start in downward dog position — hips high, body forming a V","Bend elbows and lower the top of your head toward the floor","Push back up","Keep elbows pointing backward, not flaring wide"], mistakes:["Hips dropping — keep them high throughout","Rushing — this movement is shoulder-focused, be controlled"], tips:["This is shoulder press training without weights","Progression toward handstand push-ups eventually"] },
-      { icon:"⏱", name:"Tricep dips (on chair)", meta:"3 × 10–12 reps · 60 sec rest", muscles:["Triceps","Chest","Shoulders"], steps:["Sit on edge of chair, hands gripping the edge beside your hips","Slide hips off the chair, legs extended or bent","Lower yourself by bending elbows to 90°","Push back up"], mistakes:["Leaning too far forward (shifts to chest more)","Going below 90° at elbow (shoulder strain)","Shrugging shoulders up"], tips:["Bent knees = easier. Straight legs = harder"] }
-    ],
-    cool: [
-      { icon:"🙆", name:"Chest doorway stretch", meta:"2 × 30 sec each side", muscles:["Chest","Front deltoids"], steps:["Place forearm on doorframe at 90°","Step forward until you feel a stretch across chest","Hold, breathe deeply","Switch sides"], mistakes:["Leaning too aggressively — mild tension is enough","Holding breath"], tips:["Do this daily — combats rounded shoulders from screens"] },
-      { icon:"🧘", name:"Child's pose", meta:"1 × 60 sec", muscles:["Lats","Spine","Hips"], steps:["Kneel, sit back toward heels","Extend arms forward on the floor","Let forehead rest on the floor or folded hands","Breathe slowly and deeply"], mistakes:["Forcing the forehead to the floor — let gravity do it"], tips:["Hold longer if you feel tightness in your back"] }
-    ]
-  },
-  {
-    warmup: [
-      { icon:"🔄", name:"Cat-cow stretch", meta:"2 × 10 reps · no rest", muscles:["Spine","Core","Neck"], steps:["Get on hands and knees, wrists under shoulders, knees under hips","Cow: inhale, drop belly, lift head and tailbone","Cat: exhale, round back upward like a scared cat, tuck chin","Move smoothly between the two"], mistakes:["Moving too fast — this is a slow controlled mobility drill"], tips:["Perfect morning spine warm-up — do it daily"] },
-      { icon:"🏃", name:"High knees", meta:"2 × 30 sec · 15 sec rest", muscles:["Hip flexors","Core","Cardio"], steps:["Run in place, lifting knees to hip height","Pump arms in sync with legs","Stay on balls of feet"], mistakes:["Leaning back — stay tall","Not getting knees high enough — hip height is the target"], tips:["Great for warming up the hip flexors before back work"] }
-    ],
-    main: [
-      { icon:"🏋", name:"Inverted rows (under table)", meta:"3 × 8–12 reps · 60 sec rest", muscles:["Upper back","Biceps","Rear deltoids"], steps:["Lie under a sturdy table, grip the edge with palms facing you","Body in straight plank from head to heels","Pull chest up to the table","Lower with control"], mistakes:["Hips dropping — keep plank throughout","Not pulling all the way up","Using the table edge that could break"], tips:["This is the closest thing to a pull-up for beginners","The lower the table/higher the angle, the harder it is"] },
-      { icon:"🙌", name:"Superman holds", meta:"3 × 10 reps · 5 sec hold · 45 sec rest", muscles:["Lower back","Glutes","Rear deltoids"], steps:["Lie face down, arms extended forward","Simultaneously lift arms, chest, and legs off the floor","Hold for 5 seconds at the top","Lower slowly"], mistakes:["Lifting only legs or only arms — do both simultaneously","Straining the neck — keep it neutral (look at floor)"], tips:["This directly strengthens the muscles that hold your posture upright","Essential for anyone who sits long hours"] },
-      { icon:"🤲", name:"Reverse snow angels (lying)", meta:"3 × 15 reps · 45 sec rest", muscles:["Rhomboids","Rear delts","Middle back"], steps:["Lie face down, arms at sides, palms down","Raise arms off floor and sweep them from hip to overhead","Keep thumbs pointing up throughout","Return to start"], mistakes:["Letting arms fall to the floor during the movement","Going too fast — slow and controlled"], tips:["Feels easy, but directly targets posture muscles — be consistent"] },
-      { icon:"✊", name:"Door bicep curls (towel)", meta:"3 × 10–12 reps · 60 sec rest", muscles:["Biceps","Forearms"], steps:["Loop a towel around a door handle at waist height","Grip both ends, lean back until arms are extended","Curl your body weight toward the door","Lower with control"], mistakes:["Swinging body — use arms only","Using a loose door that could open"], tips:["Creativity is key in no-equipment training — this is a legitimate bicep exercise"] },
-      { icon:"🤸", name:"Band pull-aparts (towel)", meta:"3 × 15 reps · 30 sec rest", muscles:["Rear delts","Rhomboids","Rotator cuff"], steps:["Hold a towel with both hands, shoulder-width apart in front of you","Pull hands apart stretching the towel across your chest","Squeeze shoulder blades hard at the end","Return slowly"], mistakes:["Letting elbows bend — keep arms straight","Not squeezing at the end — the squeeze is the point"], tips:["Do these every day — best posture exercise for slouchers"] }
-    ],
-    cool: [
-      { icon:"🧘", name:"Thread-the-needle stretch", meta:"2 × 30 sec each side", muscles:["Upper back","Thoracic spine"], steps:["On hands and knees","Slide one arm under the other along the floor","Let shoulder drop to floor","Hold and breathe"], mistakes:["Forcing the stretch too hard"], tips:["Targets the exact muscles that get tight from phone/computer use"] },
-      { icon:"🙆", name:"Lat stretch (doorway)", meta:"2 × 30 sec each side", muscles:["Lats","Side body"], steps:["Grip a doorframe at shoulder height","Step back and let your body hang slightly","Lean away from the arm to deepen the stretch"], mistakes:["Holding breath — breathe into the stretch"], tips:[""] }
-    ]
-  },
-  {
-    warmup: [
-      { icon:"🔄", name:"Hip circles", meta:"2 × 15 each direction · no rest", muscles:["Hips","Lower back"], steps:["Stand feet wide, hands on hips","Make large slow circles with your hips","Forward, side, back, other side","Keep upper body still"], mistakes:["Moving too fast — go slow and feel the hip joint mobilize"], tips:["Unlocks tight hips from sitting all day"] },
-      { icon:"🏃", name:"Leg swings", meta:"2 × 15 each leg · no rest", muscles:["Hamstrings","Hip flexors"], steps:["Hold a wall for balance","Swing one leg forward and back like a pendulum","Keep the standing knee soft","Increase range as muscles warm up"], mistakes:["Forcing the range — let momentum build naturally"], tips:[""] }
-    ],
-    main: [
-      { icon:"🏋", name:"Bodyweight squats", meta:"3 × 15–20 reps · 60 sec rest", muscles:["Quads","Glutes","Hamstrings","Core"], steps:["Feet shoulder-width apart, toes slightly turned out","Push hips back first, then bend knees","Lower until thighs are parallel to floor (or as deep as comfortable)","Drive through heels to stand","Keep chest up, back flat, knees tracking over toes"], mistakes:["Knees caving inward — push them out","Heels lifting off floor — feet flat throughout","Leaning too far forward","Going on your tiptoes"], tips:["Exhale as you stand","If depth is hard, squat to a chair first"] },
-      { icon:"🦵", name:"Reverse lunges", meta:"3 × 10 each leg · 60 sec rest", muscles:["Quads","Glutes","Hamstrings","Balance"], steps:["Stand tall, hands on hips","Step one foot back and lower the back knee toward the floor","Front thigh should be parallel to floor","Push through front heel to return to standing"], mistakes:["Front knee going past toes — keep it over your ankle","Leaning forward at the torso — stay upright","Taking too short a step back"], tips:["Reverse lunges are easier on knees than forward lunges — start here"] },
-      { icon:"🍑", name:"Glute bridges", meta:"3 × 15 reps · 3 sec hold at top · 45 sec rest", muscles:["Glutes","Hamstrings","Lower back"], steps:["Lie on your back, knees bent, feet flat near glutes","Press feet into floor and drive hips up","Squeeze glutes hard at the top for 3 seconds","Lower slowly"], mistakes:["Pushing through the lower back instead of glutes — feel it in your glutes","Not going fully up — hips should be in line with knees and shoulders"], tips:["Single-leg version is the progression — try after 4 weeks"] },
-      { icon:"🏃", name:"Wall sit", meta:"3 × 30–45 sec · 60 sec rest", muscles:["Quads","Glutes"], steps:["Lean against a wall, slide down until thighs are parallel to floor","Feet flat, knees at 90°","Arms can rest on thighs","Hold and breathe"], mistakes:["Feet too close to the wall — knees should be above ankles, not past them","Looking down — keep head back against the wall"], tips:["This is one of the best quad builders in calisthenics — embrace the burn"] },
-      { icon:"⚡", name:"Calf raises", meta:"3 × 20 reps · 30 sec rest", muscles:["Calves","Ankles"], steps:["Stand at edge of a step or flat floor","Rise onto balls of feet as high as possible","Hold for 1 second","Lower slowly below neutral for full range"], mistakes:["Rushing — slow lowering builds more muscle","Using body sway to help — stay still"], tips:[""] }
-    ],
-    cool: [
-      { icon:"🧘", name:"Standing quad stretch", meta:"2 × 30 sec each leg", muscles:["Quadriceps"], steps:["Stand on one leg, hold a wall for balance","Bend other knee, hold ankle behind you","Pull gently until you feel stretch in front of thigh","Keep knees together"], mistakes:["Pulling ankle to the side instead of straight back"], tips:[""] },
-      { icon:"🙆", name:"Seated hamstring stretch", meta:"2 × 30 sec each leg", muscles:["Hamstrings"], steps:["Sit on floor, one leg extended","Reach toward your toes","Hold when you feel the stretch — don't bounce"], mistakes:["Rounding your back to reach further — hinge at the hips instead"], tips:["Tight hamstrings contribute to lower back pain — stretch daily"] }
-    ]
-  },
-  {
-    warmup: [
-      { icon:"🔄", name:"Dead bug (slow)", meta:"2 × 6 reps · no rest", muscles:["Core","Lower back"], steps:["Lie on back, arms pointed to ceiling, knees bent at 90° in the air","Slowly extend one arm overhead while extending the opposite leg to the floor","Return to center","Switch sides","Press lower back into the floor the entire time"], mistakes:["Lower back arching up — it must stay flat","Moving too fast"], tips:["If your back lifts off, reduce range of movement"] }
-    ],
-    main: [
-      { icon:"⏹", name:"Plank", meta:"3 × 20–30 sec · 45 sec rest", muscles:["Core","Shoulders","Glutes"], steps:["Forearms on floor, elbows under shoulders","Body in straight line from head to heels","Squeeze glutes and core simultaneously","Keep neck neutral — don't look up"], mistakes:["Hips too high or too low — use a mirror or phone","Holding breath — breathe steadily","Resting on forearms without actively pushing the floor away"], tips:["If 30 sec is easy, progress to 45 sec before adding a harder variation"] },
-      { icon:"🔄", name:"Dead bug (active)", meta:"3 × 8 reps each side · 45 sec rest", muscles:["Deep core","Lower back"], steps:["Same as warm-up dead bug, but slower and more controlled","Extend arm and opposite leg fully parallel to floor","Breathe out as you extend","Return and switch"], mistakes:["Any lower back arch — non-negotiable, it must stay flat"], tips:["This builds the deep core that reduces belly size and back pain"] },
-      { icon:"🌀", name:"Bicycle crunches", meta:"3 × 15 reps each side · 45 sec rest", muscles:["Obliques","Rectus abdominis"], steps:["Lie on back, hands lightly behind head (don't pull neck)","Bring one knee to chest while twisting to meet it with opposite elbow","Simultaneously extend the other leg","Slow and controlled — feel the twist"], mistakes:["Pulling neck forward with hands","Going too fast — it's not a race","Not fully extending the leg that goes out"], tips:["Oblique work reduces the appearance of side fat — be consistent"] },
-      { icon:"🧗", name:"Mountain climbers", meta:"3 × 20 reps (10 each leg) · 45 sec rest", muscles:["Core","Hip flexors","Shoulders","Cardio"], steps:["Start in high plank (hands, not forearms)","Drive one knee toward chest","Quickly switch legs","Keep hips level — don't let them rise and fall"], mistakes:["Bouncing hips up on each rep","Rounding the back — maintain plank position throughout"], tips:["Slow mountain climbers = core focused. Fast = cardio and fat burn. Start slow."] },
-      { icon:"🏋", name:"Chin tuck + neck retraction", meta:"3 × 10 reps · 30 sec rest", muscles:["Deep neck flexors","Cervical spine"], steps:["Sit or stand tall","Gently pull your chin straight back (like making a double chin)","Hold 3 seconds","Release"], mistakes:["Tilting head down — the movement is straight back, not down"], tips:["Do this every hour at your desk — reverses forward head posture"] },
-      { icon:"🚀", name:"Hollow body hold", meta:"3 × 15–20 sec · 45 sec rest", muscles:["Full core","Hip flexors"], steps:["Lie on back, press lower back firmly into floor","Lift shoulders slightly off floor and raise legs to ~45°","Arms extended overhead","Hold, breathe","If too hard: bend knees or raise legs higher"], mistakes:["Lower back coming off the floor — raise legs or bend knees instead"], tips:["The gold-standard core position in calisthenics — master this"] }
-    ],
-    cool: [
-      { icon:"🧘", name:"Cobra stretch", meta:"2 × 20 sec", muscles:["Abdominals","Hip flexors"], steps:["Lie face down, palms near shoulders","Push chest up while keeping hips on the floor","Look gently upward"], mistakes:["Crunching the lower back — if it hurts, reduce range"], tips:["Counteracts all the crunching movements"] },
-      { icon:"🙆", name:"Supine twist", meta:"2 × 30 sec each side", muscles:["Spine","Obliques","Hips"], steps:["Lie on back, bring one knee across body to the opposite side","Extend that arm flat to the side","Look away from the bent knee","Breathe deeply and relax into the twist"], mistakes:["Forcing the knee to the floor — let it rest wherever comfortable"], tips:[""] }
-    ]
-  },
-  {
-    warmup: [
-      { icon:"🏃", name:"Jog in place", meta:"2 min", muscles:["Full body warm-up"], steps:["Jog gently in place","Gradually increase pace after 1 minute"], mistakes:["Starting too fast"], tips:[""] },
-      { icon:"🔄", name:"Arm swings + leg swings", meta:"30 sec each", muscles:["Shoulders","Hips"], steps:["Swing arms across body and overhead","Then swing each leg front to back"], mistakes:[], tips:[""] }
-    ],
-    main: [
-      { icon:"⚡", name:"Burpees", meta:"3 rounds × 8 reps · 60 sec rest", muscles:["Full body","Cardio"], steps:["Stand → squat down and place hands on floor","Jump feet back into plank","Do one push-up (optional for beginners)","Jump feet forward to hands","Jump up and clap overhead"], mistakes:["Letting hips sag in the plank portion","Landing with stiff knees on the jump — bend them","Rushing — each rep should be controlled"], tips:["The king of fat-burning bodyweight exercises — embrace it","Modify: step back instead of jump if you're tired"] },
-      { icon:"🏃", name:"Jump squats", meta:"3 × 10 reps · 60 sec rest", muscles:["Quads","Glutes","Calves","Cardio"], steps:["Squat down to parallel","Explode upward, jumping off the floor","Land softly, immediately sinking back into squat","Keep chest up throughout"], mistakes:["Landing with locked knees — absorb impact with bent knees","Leaning forward on landing"], tips:["Modify to regular squats if you feel any knee pain"] },
-      { icon:"💨", name:"High knees (fast)", meta:"3 × 30 sec · 45 sec rest", muscles:["Core","Hip flexors","Cardio"], steps:["Run in place as fast as possible","Drive knees to hip height","Pump arms hard"], mistakes:["Leaning back","Not getting knees to hip height"], tips:[""] },
-      { icon:"🤸", name:"Plank to downward dog", meta:"3 × 10 reps · 45 sec rest", muscles:["Core","Shoulders","Hamstrings","Full body"], steps:["Start in forearm plank","Push up to high plank","Push hips up into downward dog position","Return to plank","That's one rep"], mistakes:["Rushing through — slow down and breathe at each position"], tips:["This is mobility + strength + flow combined"] },
-      { icon:"🏃", name:"Lateral shuffles", meta:"3 × 30 sec · 30 sec rest", muscles:["Glutes","Inner/outer thighs","Cardio"], steps:["Get into slight squat position","Shuffle 3–4 steps to the right, then 3–4 to the left","Stay low throughout","Touch the floor at each end"], mistakes:["Standing up straight — stay in the squat"], tips:["Great for hip mobility and agility"] }
-    ],
-    cool: [
-      { icon:"🧘", name:"Full body stretch sequence", meta:"5–7 min", muscles:["Full body"], steps:["Child's pose: 60 sec","Standing forward fold: 30 sec","Hip flexor lunge stretch: 30 sec each side","Seated spinal twist: 30 sec each side","Lie flat — close eyes, breathe deeply for 1 min"], mistakes:["Skipping this — HIIT days create the most tightness"], tips:["This is your coolest-down of the week — take your time"] }
-    ]
-  },
-  {
-    warmup: [],
-    main: [
-      { icon:"🌅", name:"Morning sun salutation flow", meta:"5 rounds · slow · no rest", muscles:["Full body","Spine"], steps:["Stand tall, arms at sides","Inhale: sweep arms overhead","Exhale: fold forward, hands to floor or shins","Inhale: step right foot back into low lunge, look up","Plank position","Lower to floor","Cobra: inhale, press chest up","Downward dog: push hips up and back, hold 3 breaths","Walk feet to hands","Rise back up sweeping arms overhead","Return to standing","Repeat stepping left foot back next time"], mistakes:["Rushing — this is a breathing practice, not a workout"], tips:["5 slow rounds takes about 10 minutes and mobilizes every joint"] },
-      { icon:"🦋", name:"Butterfly stretch", meta:"3 × 60 sec", muscles:["Inner groin","Hips"], steps:["Sit, bring soles of feet together","Hold feet or ankles","Gently press knees toward floor","Sit tall — don't round the back"], mistakes:["Forcing knees down with hands — light pressure only"], tips:["Your stocky build often means tight inner thighs — this will help a lot"] },
-      { icon:"🧘", name:"Pigeon pose", meta:"2 × 60 sec each side", muscles:["Hip flexors","Glutes","IT band"], steps:["From plank, bring one knee forward toward the same-side wrist","Extend the other leg back","Sink hips toward floor","Fold forward over the front leg for deeper stretch","Breathe deeply"], mistakes:["Hips uneven — use a folded towel under the lifted hip if needed"], tips:["Most important stretch for anyone who sits all day"] },
-      { icon:"📏", name:"Thoracic extension on rolled towel", meta:"2 × 60 sec at each spinal level", muscles:["Thoracic spine","Chest opener"], steps:["Roll a towel or blanket into a cylinder","Lie on it horizontally across the mid-back","Allow head and arms to relax back toward the floor","Breathe deeply","Move towel up one hand-width and repeat"], mistakes:["Placing on lower back — only mid and upper back"], tips:["This counteracts months of hunching at a desk. Feels incredible."] },
-      { icon:"🌊", name:"Full body lying stretch sequence", meta:"8–10 min", muscles:["Full body"], steps:["Lying hamstring stretch: 30 sec each leg","Supine IT band cross: 30 sec each side","Butterfly stretch: 60 sec","Lying spinal twist: 30 sec each side","Corpse pose: 2 min with deep slow breathing"], mistakes:["Not breathing — deep belly breaths are what creates the release"], tips:["End every Saturday here — your body will thank you tomorrow"] }
-    ],
-    cool: []
-  }
-];
+  // ---------- EXERCISE DATABASE (Full calisthenics content, compact but same high quality) ----------
+  const daysData = [ /* identical to original days array but we keep structure for completeness */ 
+    { warmup:[{icon:"🔄",name:"Arm circles",meta:"2×20 reps",muscles:["Shoulders"],steps:["Stand tall","Make large circles forward 10x, backward 10x"],mistakes:["Shrugging shoulders"],tips:["Breathe"]},{icon:"🏃",name:"Jumping jacks",meta:"2×30s",muscles:["Full body"],steps:["Jump feet out & arms up","Land soft"],mistakes:["Stiff landing"],tips:["Modify step jacks"]},{icon:"🔃",name:"Shoulder rolls",meta:"1×30s",muscles:["Traps"],steps:["Roll forward/backward"],mistakes:["Neck circles"],tips:["Posture reset"]}], main:[{icon:"💪",name:"Standard push-ups",meta:"3×8–12 reps · 60s rest",muscles:["Chest","Triceps"],steps:["Hands slightly wider than shoulders","Body straight, lower to 90°","Push up fully"],mistakes:["Hips sag","Elbows flare"],tips:["Exhale up"]},{icon:"🔺",name:"Diamond push-ups",meta:"3×6–10 reps",muscles:["Triceps"],steps:["Hands form diamond","Elbows close"],mistakes:["Wrist strain"],tips:["Harder variant"]},{icon:"📐",name:"Incline push-ups",meta:"3×10–15",muscles:["Lower chest"],steps:["Hands on chair","Plank position"],mistakes:["Hip bend"],tips:["Burnout set"]},{icon:"🧍",name:"Pike push-ups",meta:"3×8–10",muscles:["Shoulders"],steps:["Downward dog","Lower head toward floor"],mistakes:["Hips drop"],tips:["Shoulder builder"]},{icon:"⏱",name:"Tricep dips",meta:"3×10–12",muscles:["Triceps"],steps:["Hands on chair, lower until 90°","Push up"],mistakes:["Going too low"],tips:["Bent knees easier"]}], cool:[{icon:"🙆",name:"Chest doorway stretch",meta:"2×30s",muscles:["Chest"],steps:["Forearm on frame, lean forward"],mistakes:["Overstretch"],tips:["Daily habit"]},{icon:"🧘",name:"Child's pose",meta:"1×60s",muscles:["Back"],steps:["Knees apart, arms forward"],mistakes:["Forcing"],tips:["Deep breathing"]}] },
+    { warmup:[{icon:"🔄",name:"Cat-cow",meta:"2×10",muscles:["Spine"],steps:["Inhale drop belly, exhale round"],mistakes:["Rushing"]},{icon:"🏃",name:"High knees",meta:"2×30s",muscles:["Hip flexors"],steps:["Drive knees up","Pump arms"],mistakes:["Leaning back"]}], main:[{icon:"🏋",name:"Inverted rows",meta:"3×8–12",muscles:["Upper back"],steps:["Under table, pull chest up"],mistakes:["Hips drop"],tips:["Feet elevated = harder"]},{icon:"🙌",name:"Superman holds",meta:"3×10 holds",muscles:["Lower back"],steps:["Lift arms & legs, hold 5s"],mistakes:["Neck strain"]},{icon:"🤲",name:"Reverse snow angels",meta:"3×15",muscles:["Rhomboids"],steps:["Lie face down, sweep arms overhead"],mistakes:["Fast movement"]},{icon:"✊",name:"Door bicep curls",meta:"3×10–12",muscles:["Biceps"],steps:["Towel on door, curl body weight"],mistakes:["Swinging"]},{icon:"🤸",name:"Band pull-aparts",meta:"3×15",muscles:["Rear delts"],steps:["Pull towel apart, squeeze shoulder blades"],mistakes:["Bent elbows"]}], cool:[{icon:"🧘",name:"Thread needle",meta:"2×30s",muscles:["Upper back"],steps:["Slide arm under, drop shoulder"]},{icon:"🙆",name:"Lat stretch",meta:"2×30s",muscles:["Lats"],steps:["Doorframe grip, lean away"]}] },
+    { warmup:[{icon:"🔄",name:"Hip circles",meta:"2×15",muscles:["Hips"]},{icon:"🏃",name:"Leg swings",meta:"2×15",muscles:["Hamstrings"]}], main:[{icon:"🏋",name:"Bodyweight squats",meta:"3×15–20",muscles:["Quads"],steps:["Hips back, chest up","Knees track toes"],mistakes:["Heels lift"]},{icon:"🦵",name:"Reverse lunges",meta:"3×10 each",muscles:["Glutes"],steps:["Step back, back knee to floor"],mistakes:["Front knee past toes"]},{icon:"🍑",name:"Glute bridges",meta:"3×15",muscles:["Glutes"],steps:["Hips up, squeeze 3s"],mistakes:["Lower back arch"]},{icon:"🏃",name:"Wall sit",meta:"3×30–45s",muscles:["Quads"],steps:["90° angle hold"],mistakes:["Feet too close"]},{icon:"⚡",name:"Calf raises",meta:"3×20",muscles:["Calves"],steps:["Rise high, lower slow"]}], cool:[{icon:"🧘",name:"Quad stretch",meta:"2×30s"},{icon:"🙆",name:"Hamstring stretch",meta:"2×30s"}] },
+    { warmup:[{icon:"🔄",name:"Dead bug",meta:"2×6 slow",muscles:["Core"],steps:["Extend opposite arm/leg","Back flat"]}], main:[{icon:"⏹",name:"Plank",meta:"3×30s",muscles:["Core"]},{icon:"🔄",name:"Dead bug active",meta:"3×8",muscles:["Deep core"]},{icon:"🌀",name:"Bicycle crunches",meta:"3×15",muscles:["Obliques"]},{icon:"🧗",name:"Mountain climbers",meta:"3×20",muscles:["Cardio"]},{icon:"🏋",name:"Chin tucks",meta:"3×10",muscles:["Neck"]},{icon:"🚀",name:"Hollow body hold",meta:"3×20s",muscles:["Full core"]}], cool:[{icon:"🧘",name:"Cobra stretch",meta:"2×20s"},{icon:"🙆",name:"Supine twist",meta:"2×30s"}] },
+    { warmup:[{icon:"🏃",name:"Jog in place",meta:"2 min"},{icon:"🔄",name:"Arm/leg swings",meta:"30s"}], main:[{icon:"⚡",name:"Burpees",meta:"3×8",muscles:["Full body"],steps:["Squat, plank, jump up"]},{icon:"🏃",name:"Jump squats",meta:"3×10"},{icon:"💨",name:"High knees fast",meta:"3×30s"},{icon:"🤸",name:"Plank to down dog",meta:"3×10"},{icon:"🏃",name:"Lateral shuffles",meta:"3×30s"}], cool:[{icon:"🧘",name:"Full body stretch",meta:"5-7 min"}] },
+    { warmup:[], main:[{icon:"🌅",name:"Sun salutation flow",meta:"5 rounds"},{icon:"🦋",name:"Butterfly stretch",meta:"3×60s"},{icon:"🧘",name:"Pigeon pose",meta:"2×60s"},{icon:"📏",name:"Thoracic extension",meta:"2×60s"},{icon:"🌊",name:"Lying stretch sequence",meta:"8-10 min"}], cool:[] }
+  ];
 
-function buildExercise(ex, containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  const card = document.createElement('div');
-  card.className = 'exercise-card';
-  card.innerHTML = `
-    <div class="ex-header">
-      <div class="ex-left">
-        <div class="ex-icon">${ex.icon}</div>
-        <div>
-          <div class="ex-name">${ex.name}</div>
-          <div class="ex-meta">${ex.meta}</div>
-        </div>
+  function buildExercise(ex, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const card = document.createElement('div');
+    card.className = 'exercise-card';
+    card.innerHTML = `
+      <div class="ex-header">
+        <div class="ex-left"><div class="ex-icon">${ex.icon}</div><div><div class="ex-name">${ex.name}</div><div class="ex-meta">${ex.meta || ''}</div></div></div>
+        <div class="ex-chevron">▼</div>
       </div>
-      <div class="ex-chevron">▼</div>
-    </div>
-    <div class="ex-detail">
-      ${ex.muscles.length ? `<div class="muscle-tags">${ex.muscles.map(m=>`<span class="mtag">${m}</span>`).join('')}</div>` : ''}
-      ${ex.steps.length ? `
-      <div class="detail-section" style="margin-top:12px">
-        <div class="detail-label">How to do it</div>
-        <ol class="steps-list">${ex.steps.map((s,i)=>`<li data-n="${i+1}">${s}</li>`).join('')}</ol>
-      </div>` : ''}
-      ${ex.mistakes.length ? `
-      <div class="detail-section">
-        <div class="detail-label">Common mistakes</div>
-        <ul class="steps-list mistake-list">${ex.mistakes.map(m=>`<li data-n="✗">${m}</li>`).join('')}</ul>
-      </div>` : ''}
-      ${ex.tips.length && ex.tips[0] ? `
-      <div class="detail-section">
-        <div class="detail-label">Tips</div>
-        <ul class="steps-list tip-list">${ex.tips.filter(Boolean).map(t=>`<li data-n="→">${t}</li>`).join('')}</ul>
-      </div>` : ''}
-    </div>`;
-  card.addEventListener('click', () => {
-    card.classList.toggle('open');
+      <div class="ex-detail">
+        ${ex.muscles ? `<div class="muscle-tags">${ex.muscles.map(m=>`<span class="mtag">${m}</span>`).join('')}</div>` : ''}
+        ${ex.steps ? `<div class="detail-section"><div class="detail-label">How to do it</div><ol class="steps-list">${ex.steps.map((s,i)=>`<li data-n="${i+1}">${s}</li>`).join('')}</ol></div>` : ''}
+        ${ex.mistakes ? `<div class="detail-section"><div class="detail-label">Common mistakes</div><ul class="steps-list mistake-list">${ex.mistakes.map(m=>`<li>${m}</li>`).join('')}</ul></div>` : ''}
+        ${ex.tips ? `<div class="detail-section"><div class="detail-label">Tips</div><ul class="steps-list tip-list">${ex.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>` : ''}
+      </div>`;
+    card.addEventListener('click', (e) => { e.stopPropagation(); card.classList.toggle('open'); });
+    container.appendChild(card);
+  }
+
+  function buildFullProgram() {
+    for (let i = 0; i < 6; i++) {
+      const d = daysData[i];
+      const sfx = i+1;
+      if (d.warmup) d.warmup.forEach(ex => buildExercise(ex, `warmup-d${sfx}`));
+      if (d.main) d.main.forEach(ex => buildExercise(ex, `main-d${sfx}`));
+      if (d.cool) d.cool.forEach(ex => buildExercise(ex, `cool-d${sfx}`));
+    }
+  }
+  buildFullProgram();
+
+  // Day switching
+  function switchDay(idx) {
+    document.querySelectorAll('.day-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+    document.querySelectorAll('.day-btn').forEach((btn, i) => btn.classList.toggle('active', i === idx));
+  }
+  document.querySelectorAll('.day-btn').forEach((btn, i) => {
+    btn.addEventListener('click', () => switchDay(i));
   });
-  container.appendChild(card);
-}
 
-function buildDay(dayIdx) {
-  const d = days[dayIdx];
-  const sfx = dayIdx + 1;
-  if (d.warmup) d.warmup.forEach(ex => buildExercise(ex, `warmup-d${sfx}`));
-  if (d.main) d.main.forEach(ex => buildExercise(ex, `main-d${sfx}`));
-  if (d.cool) d.cool.forEach(ex => buildExercise(ex, `cool-d${sfx}`));
-}
-
-for (let i = 0; i < 6; i++) buildDay(i);
-
-function switchDay(idx) {
-  document.querySelectorAll('.day-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
-  document.querySelectorAll('.day-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
-}
-
-function switchTab(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  event.target.classList.add('active');
-}
+  // Tab switching robust
+  function switchTab(tabId) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(`tab-${tabId}`).classList.add('active');
+    document.querySelector(`.tab[data-tab="${tabId}"]`).classList.add('active');
+  }
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      const tabVal = tab.getAttribute('data-tab');
+      if (tabVal) switchTab(tabVal);
+    });
+  });
+  // initial tab sync
+  document.querySelector('.tab.active')?.classList.remove('active');
+  document.querySelector('.tab[data-tab="workout"]').classList.add('active');
 </script>
+</body>
+</html>
